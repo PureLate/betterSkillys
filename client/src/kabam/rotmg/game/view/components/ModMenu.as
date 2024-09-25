@@ -6,7 +6,7 @@ import flash.display.Sprite;
 import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.text.TextFieldAutoSize;
-import flash.ui.Keyboard;
+import Alex.UI.ItemPanel;// Import MemMarket class
 
 public class ModMenu extends Sprite
 {
@@ -61,10 +61,17 @@ public class ModMenu extends Sprite
 
     public function setCommand(index:int):void
     {
+        if (index == 4) { // If the index is for "Give"
+            openItemPanel();
+        }
         if (autoRun[index] == true)
             this.gs.gsc_.playerText(commands[index]);
         else
             this.gs.textBox_.selectInput(commands[index]);
+    }
+    private function openItemPanel():void {
+        var items:ItemPanel = new ItemPanel(gs);
+        this.gs.addChild(items);
     }
 }
 }
